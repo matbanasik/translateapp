@@ -1,0 +1,309 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Abel', sans-serif;
+}
+
+html{
+    
+    body{
+        overflow: hidden;
+        
+        .container{
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            
+            .navbar{
+                width: 100%;
+                background-color: #222222;
+                height: 50px;
+                
+                ul{
+                    list-style: none;
+                    display: flex;
+                    
+                    li{
+                        text-transform: uppercase;
+                        letter-spacing: 2px;
+                        
+                        a{
+                           display: block;
+                           text-decoration: none; 
+                           color: #e2e2e2;
+                           padding: 15px;
+                           transition: .3s ease;
+                            height: 100%;
+                            
+                            &:hover{
+                                background-color: #313234; 
+                            }
+                        }
+                    }
+                }
+            }
+            
+            .main-content{
+                width: 100%;
+                display: flex;
+                height: calc(100vh - 50px);
+                
+                .left-container{
+                    width: 70%;
+                    box-sizing: border-box; 
+                    padding: 10px;
+                    background-color: #303133;
+                    
+                    .languages-container{
+                        color: #e2e2e2;
+                        width: 100%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        padding: 15px 0;
+                        
+                        .language{
+                            color: #6795DE;
+                            border: 1px solid #6795DE;
+                            background-color: #1D1D1F;
+                            padding: 5px 10px;
+                            font-size: 20px;
+                            position: relative;
+                            min-width: 100px;
+                            cursor: pointer;
+                            transition: .3s ease;
+                        }
+                        
+                        .all-languages{
+                            min-width: 100px;
+                            position: absolute;
+                            top: calc(100% + 1px);
+                            left: -1px;
+                            z-index: 2;
+                           
+                            .single-language{
+                                padding: 5px 10px;
+                                border: 1px solid #6795DE;
+                                border-top: 0px;
+                                background-color: #1D1D1F;
+                                min-width: 100px;
+                                cursor: pointer;
+                                transition: .3s ease;
+                                
+                                &:hover{
+                                    background-color: #303133;
+                                }
+                            }
+                            
+                        }
+                        
+                        .language-switch{
+                            width: 40px;
+                            font-size: 30px;
+                            color: #6795DE;
+                            cursor: pointer;
+                            text-align: center;
+                        }
+                        
+                    }
+                
+                    .text-container{
+                        color: #e2e2e2;
+                        
+                        .tooltip{
+                            position: absolute;
+                            width: 200px;
+                            height: 100px;
+                            background: #262729;
+                            top: 0;
+                            left: 0;
+                            display: flex;
+                            flex-wrap: wrap;
+                            justify-content: center;
+                            align-items: center;
+                            color: #e2e2e2;
+                            font-size: 18px;
+                            text-align: center;
+                            
+                            .tooltip-first{
+                                width: 50%;
+                                padding: 10px;
+                                box-sizing: border-box;
+                            }
+                            
+                            .tooltip-second{
+                                width: 50%;
+                                padding: 10px;
+                                box-sizing: border-box;
+                            }
+                            
+                            // .tooltip-button{
+                            //     width: 80%;
+                            //     outline: none;
+                            //     color: #6795DE;
+                            //     background-color: #151616;
+                            //     border: 1px solid #6795DE;
+                            //     padding: 10px 0;
+                            //     font-size: 16px;
+                            //     cursor: pointer;
+                            // }
+
+                            .tooltip-down{
+                                width: 100%;
+                                background-color: #151616;
+                                padding: 10px;
+                                font-size: 12px;
+                            }
+                            
+                            &.hidden{
+                                display: none;
+                            }
+                        }
+                        
+
+                        p{
+                            font-size: 24px;
+
+
+                            span{
+                                cursor: pointer;
+                                transition: .2s ease;
+
+                                &.highlighted{
+                                    background-color: #3399ff;
+                                }
+
+
+                            }
+                        }
+                    }
+                    
+                    .start-container{
+                        width: 100%;
+                        height: 100%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        
+                        .start-btn{
+                            display: block;
+                            padding: 20px 40px;
+                            font-size: 30px;
+                            text-transform: uppercase;
+                            background-color: #1D1D1F;
+                            color: #6795DE;
+                            border: 1px solid #6795DE;
+                            border-radius: 5px;
+                            cursor: pointer;
+                            transition: .2s ease;
+                            
+                            &:hover{
+                                background-color: #151616;
+                            }
+                        }
+                    }
+                    
+                    .input-container{
+                        width: 100%;
+                        height: 100%;
+                        position: relative;
+                        
+                        
+                        .input-area{
+                            width: 100%;
+                            height: 75%;
+                            background-color: #3C3C3C;
+                            outline: none;
+                            color: #e2e2e2;
+                            font-size: 20px;
+                            
+                        }
+                        
+                        .save-btn{
+                            display: block;
+                            font-size: 30px;
+                            padding: 10px 0;
+                            width: 150px;
+                            text-align: center;
+                            text-transform: uppercase;
+                            background-color: #1D1D1F;
+                            color: #6795DE;
+                            border: 1px solid #6795DE;
+                            border-radius: 5px;
+                            cursor: pointer;
+                            transition: .2s ease;
+                            position: absolute;
+                            bottom: 80px;
+                            left: 50%;
+                            transform: translate(-50%);
+                            
+                            
+                            &:hover{
+                                background-color: #151616;
+                            }
+                        }
+                    }
+                }
+
+                .edit-container{
+                    width: 30%;
+                    padding: 10px;
+                    background-color: #262729;
+                    box-sizing: border-box;
+                    overflow: auto;
+                    
+                    ul{
+                        list-style: none;
+                        width: 100%;
+                        color: #fff;
+                        
+                        li{
+                            margin: 20px;
+                            
+                            
+                            .clicked-word{
+                                width: 100%;
+                                font-size: 24px;
+                                text-align: center;
+                                padding: 5px;
+                            }
+                            
+                            .word-details{
+                                
+                                .word-meanings{
+                                    background-color: #222222;
+                                    
+                                    .meaning{
+                                        margin: 0;
+                                        padding: 10px;
+                                        
+                                        &:nth-of-type(2n+1){
+                                            background-color: #303133;
+                                        }
+                                        
+                                    }
+                                }
+                            }
+                            
+                        }
+                        
+                        .odd{
+                           background-color: #222222;
+                        }
+                        
+                        .even{
+                            background-color: #222222;
+                        }
+                        
+//                        &:nth-child(2n+1){
+//                            background-color: #151616;
+//                        }
+
+                    }
+                    
+                    
+                }
+            }
+        }
+    }
+}
