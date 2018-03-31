@@ -88,10 +88,58 @@ componentDidMount(){
     paragraph.innerHTML = paragraph.innerHTML.replace(/\b(\w+)\b/g, "<span>$1</span>");
       
     let singleWords = document.querySelectorAll('.text-container span');
+
+    const scrollbar = document.querySelector('.scrollbar'),
+          textContainer =  document.querySelector('.text-container'),
+          textWrapper = document.querySelector('.text-wrapper'),
+          textContainerHeight = textContainer.clientHeight,
+          textWrapperHeight = textWrapper.clientHeight,
+
+          diffH = textWrapperHeight - textContainerHeight;
+
+
+
+          const scrollbarHeight = 100 - ((diffH / textWrapperHeight) * 100);
+                
+
+          if (diffH > 0){
+            scrollbar.style.height = `${scrollbarHeight}%`;
+          }else{
+            scrollbar.style.height = `0`;
+          }
+
+
+
+    textContainer.addEventListener('scroll', (e) => {
+
+        let scrollbarToDown = (textContainer.scrollTop / (textWrapperHeight - 500)) * (100 - scrollbarHeight);
+
+        scrollbar.style.top = `${scrollbarToDown}%`;
+
+
+
+    })
+
+    scrollbar.addEventListener('mousedown', (e) => {
+
+        scrollbar.addEventListener('mousemove', (e) => {
+            
+
+
+            scrollbar.style.top = `${e.clientY}`;
+
+            
+
+        })
+
+    })
+
+
       
     singleWords.forEach((word) => {
         word.addEventListener('mouseover', () => {
             word.classList.add('highlighted');
+            word.style.display = 'inline-block';
             
             this.setState({
                 tooltipVisible: true
@@ -100,48 +148,49 @@ componentDidMount(){
             const tooltip = document.querySelector('.tooltip');
             const tooltipHeight = tooltip.clientHeight;
             const tooltipWidth = tooltip.clientWidth;
-            const tooltipX = word.offsetLeft - tooltipWidth / 2;
+            const tooltipX = word.offsetLeft - tooltipWidth / 2 + word.clientWidth / 2;
             const tooltipY = word.offsetTop - tooltipHeight;             
             const tooltipFirstWord = document.querySelector('.tooltip-first');
             const tooltipSecondWord = document.querySelector('.tooltip-second');
+
             
             tooltip.style.left = `${tooltipX}px`;
-            tooltip.style.top = `${tooltipY - 30}px`;
+            tooltip.style.top = `${tooltipY}px`;
       
             const clickedWord = word.innerHTML;
             
-            const dictApi = new Promise((resolve, reject) => {
-                const apiURL = `https://glosbe.com/gapi/translate?from=${this.state.firstLanguage[0].abbr}&dest=${this.state.secondLanguage[0].abbr}&format=json&phrase=${clickedWord}&pretty=true`
+            // const dictApi = new Promise((resolve, reject) => {
+            //     const apiURL = `https://glosbe.com/gapi/translate?from=${this.state.firstLanguage[0].abbr}&dest=${this.state.secondLanguage[0].abbr}&format=json&phrase=${clickedWord}&pretty=true`
         
-                const xhr = new XMLHttpRequest();
+            //     const xhr = new XMLHttpRequest();
         
-                xhr.open('GET', apiURL, true);
+            //     xhr.open('GET', apiURL, true);
         
-                xhr.onload = function() {
-                    if (this.status === 200) {
+            //     xhr.onload = function() {
+            //         if (this.status === 200) {
                 
-                    const data = JSON.parse(xhr.responseText)
+            //         const data = JSON.parse(xhr.responseText)
                     
-                    const wordToAdd = {
-                        clickedWord : clickedWord,
-                        data: data,
-                    }
+            //         const wordToAdd = {
+            //             clickedWord : clickedWord,
+            //             data: data,
+            //         }
 
-                    resolve(wordToAdd);
+            //         resolve(wordToAdd);
                 
-                    } else {
-                        reject('Wystąpił błąd w ściąganiu danych');
-                    }
-                }
+            //         } else {
+            //             reject('Wystąpił błąd w ściąganiu danych');
+            //         }
+            //     }
         
-            xhr.send();
+            // xhr.send();
         
-            })
+            // })
             
-            dictApi.then((response) => {
-                tooltipFirstWord.innerHTML = word.innerHTML;
-                tooltipSecondWord.innerHTML = response.data.tuc[0].phrase.text
-            })      
+            // dictApi.then((response) => {
+            //     tooltipFirstWord.innerHTML = word.innerHTML;
+            //     tooltipSecondWord.innerHTML = response.data.tuc[0].phrase.text
+            // })      
         })
           
         word.addEventListener('mouseleave', () => {
@@ -212,9 +261,22 @@ componentDidMount(){
         <div className="main-content">
             <div className = "left-container">
                 {languages}
-                <div className = "text-container">
-                    <p>{this.props.textToTranslate}</p>
-                    <Tooltip tooltipVisible = {this.state.tooltipVisible}/>
+
+                <div className = "content-container">
+                    <div className = "text-container">
+                        <div className = "text-wrapper">
+                            <p>{this.props.textToTranslate}</p>
+                            <Tooltip tooltipVisible = {this.state.tooltipVisible}/>
+                        </div>
+
+
+                    </div>
+                    <div className = "scrollbar-container">
+                            <div className = "scrollbar">
+                        </div>
+
+
+                    </div>
                 </div>
             </div>
             {editField}

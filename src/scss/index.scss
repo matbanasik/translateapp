@@ -51,8 +51,13 @@ html{
                 .left-container{
                     width: 70%;
                     box-sizing: border-box; 
-                    padding: 10px;
+                    padding: 10px 50px;
                     background-color: #303133;
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: center;
+
+
                     
                     .languages-container{
                         color: #e2e2e2;
@@ -106,77 +111,110 @@ html{
                         }
                         
                     }
-                
-                    .text-container{
-                        color: #e2e2e2;
-                        
-                        .tooltip{
-                            position: absolute;
-                            width: 200px;
-                            height: 100px;
-                            background: #262729;
-                            top: 0;
-                            left: 0;
-                            display: flex;
-                            flex-wrap: wrap;
-                            justify-content: center;
-                            align-items: center;
-                            color: #e2e2e2;
-                            font-size: 18px;
-                            text-align: center;
-                            
-                            .tooltip-first{
-                                width: 50%;
-                                padding: 10px;
-                                box-sizing: border-box;
-                            }
-                            
-                            .tooltip-second{
-                                width: 50%;
-                                padding: 10px;
-                                box-sizing: border-box;
-                            }
-                            
-                            // .tooltip-button{
-                            //     width: 80%;
-                            //     outline: none;
-                            //     color: #6795DE;
-                            //     background-color: #151616;
-                            //     border: 1px solid #6795DE;
-                            //     padding: 10px 0;
-                            //     font-size: 16px;
-                            //     cursor: pointer;
-                            // }
+                    
+                    .content-container{
+                        display: flex;
+                        flex-wrap: nowrap;
+                        height: 500px;
 
-                            .tooltip-down{
+                        .scrollbar-container{
+                            width: 10px;
+                            height: 540px;
+                            position: relative;
+                            background-color: #262729;
+    
+                            .scrollbar{
                                 width: 100%;
-                                background-color: #151616;
-                                padding: 10px;
-                                font-size: 12px;
+                                height: 20%;
+                                background-color: #1D1D1F;
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                            }
+                        }
+
+                        .text-container{
+                            width: 100%;
+                            color: #e2e2e2;
+                            padding: 20px 70px;
+                            overflow: auto;
+                            height: 100%;
+                            position: relative;
+                            background-color: #262729;
+                            overflow: -moz-scrollbars-none;
+                            -ms-overflow-style: none;
+    
+                            &::-webkit-scrollbar {
+                                 width: 0 !important;
+                            }
+    
+                            // .text-wrapper{
+                               
+                            // }
+    
+                            .tooltip{
+                                position: absolute;
+                                width: 200px;
+                                height: 100px;
+                                background: #262729;
+                                top: 0;
+                                left: 0;
+                                display: flex;
+                                flex-wrap: wrap;
+                                justify-content: center;
+                                align-items: center;
+                                color: #e2e2e2;
+                                font-size: 18px;
+                                text-align: center;
+                                z-index: 10;
+                                
+                                .tooltip-first{
+                                    width: 50%;
+                                    padding: 10px;
+                                    box-sizing: border-box;
+                                }
+                                
+                                .tooltip-second{
+                                    width: 50%;
+                                    padding: 10px;
+                                    box-sizing: border-box;
+                                }
+    
+                                .tooltip-down{
+                                    width: 100%;
+                                    background-color: #151616;
+                                    padding: 10px;
+                                    font-size: 12px;
+                                }
+                                
+                                &.hidden{
+                                    display: none;
+                                }
                             }
                             
-                            &.hidden{
-                                display: none;
-                            }
-                        }
-                        
-
-                        p{
-                            font-size: 24px;
-
-
-                            span{
-                                cursor: pointer;
-                                transition: .2s ease;
-
-                                &.highlighted{
-                                    background-color: #3399ff;
+    
+                            p{
+                                font-size: 24px;
+    
+    
+                                span{
+                                    cursor: pointer;
+                                    transition: .2s ease;
+    
+                                    &.highlighted{
+                                        background-color: #3399ff;
+                                    }
+    
+    
                                 }
-
-
                             }
                         }
+
                     }
+
+
+
+
                     
                     .start-container{
                         width: 100%;

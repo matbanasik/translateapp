@@ -13,49 +13,8 @@ class Languages extends React.Component {
           firstVisible: this.props.firstVisible,
           secondVisible: this.props.secondVisible
       }
-      
-//      this.showFirstLanguages = this.showFirstLanguages.bind(this);
-//      this.showSecondLanguages = this.showSecondLanguages.bind(this);
-//      this.switchLanguages = this.switchLanguages.bind(this);
   }
     
-
-    
-//    showFirstLanguages(){
-//        this.setState({
-//            firstVisible: !this.state.firstVisible,
-//        });
-//    }
-//    
-//    showSecondLanguages(){
-//        this.setState({
-//            secondVisible: !this.state.secondVisible,
-//        });
-//        
-//    }
-    
-//    changeFirstLanguage(e){
-//        this.setState({
-//            firstLanguage: this.props.availableLangauges.filter(language => language.full === e.target.innerHTML),
-//            firstVisible: !this.state.firstVisible,
-//        })
-//        this.props.languagesInUrl(this.state.firstLanguage)
-//    }
-//    
-//    changeSecondLanguage(e){
-//        this.setState({
-//            secondLanguage: this.props.availableLangauges.filter(language => language.full === e.target.innerHTML),
-//            secondVisible: !this.state.secondVisible,
-//        })
-//    }
-    
-//    switchLanguages(){
-//        this.setState({
-//            firstLanguage: this.state.secondLanguage,
-//            secondLanguage: this.state.firstLanguage,
-//        })
-//    }
-
     
     render(){
         return(

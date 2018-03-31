@@ -77,7 +77,23 @@ html body {
             cursor: pointer;
             text-align: center; }
         html body .container .main-content .left-container .text-container {
-          color: #e2e2e2; }
+          color: #e2e2e2;
+          padding: 20px 70px;
+          overflow: hidden;
+          height: 80%;
+          position: relative; }
+          html body .container .main-content .left-container .text-container .scrollbar-container {
+            position: absolute;
+            top: 20px;
+            right: 0;
+            width: 10px;
+            height: 100%; }
+            html body .container .main-content .left-container .text-container .scrollbar-container .scrollbar {
+              width: 100%;
+              height: 20%;
+              background-color: #6795DE;
+              position: absolute;
+              top: 0; }
           html body .container .main-content .left-container .text-container .tooltip {
             position: absolute;
             width: 200px;
@@ -85,7 +101,6 @@ html body {
             background: #262729;
             top: 0;
             left: 0;
-            padding: 10px;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
@@ -94,18 +109,18 @@ html body {
             font-size: 18px;
             text-align: center; }
             html body .container .main-content .left-container .text-container .tooltip .tooltip-first {
-              width: 50%; }
+              width: 50%;
+              padding: 10px;
+              box-sizing: border-box; }
             html body .container .main-content .left-container .text-container .tooltip .tooltip-second {
-              width: 50%; }
-            html body .container .main-content .left-container .text-container .tooltip .tooltip-button {
-              width: 80%;
-              outline: none;
-              color: #6795DE;
+              width: 50%;
+              padding: 10px;
+              box-sizing: border-box; }
+            html body .container .main-content .left-container .text-container .tooltip .tooltip-down {
+              width: 100%;
               background-color: #151616;
-              border: 1px solid #6795DE;
-              padding: 10px 0;
-              font-size: 16px;
-              cursor: pointer; }
+              padding: 10px;
+              font-size: 12px; }
             html body .container .main-content .left-container .text-container .tooltip.hidden {
               display: none; }
           html body .container .main-content .left-container .text-container p {
