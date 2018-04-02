@@ -25,17 +25,17 @@ class Start extends React.Component {
       
     if(!this.state.isHidden){ 
       
-        return (
-            <div className="main-content">
-                <div className = "left-container">
-                    <div className = "start-container">
-                        <a className = "start-btn" onClick = {this.getTextarea}>
-                            Zacznij
-                        </a>
-                    </div>
+    return (
+        <div className="main-content">
+            <div className = "left-container">
+                <div className = "start-container">
+                    <a className = "start-btn" onClick = {this.getTextarea}>
+                        Zacznij
+                    </a>
                 </div>
             </div>
-        );
+        </div>
+    );
     } else{
         return (
             <Input />

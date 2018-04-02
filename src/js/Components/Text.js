@@ -84,8 +84,22 @@ componentDidMount(){
     let paragraph = document.querySelector(".text-container p");
     let wordsCollection = [];
     let key = 0;
+
+    console.log()
+
+    const wordsTable = paragraph.innerHTML.split(' ');
+    paragraph.innerHTML = '';
+
+    wordsTable.forEach((element) => {
+
+        const span = document.createElement('span');
+        span.innerHTML = `<span>${element}</span>`;
+
+        paragraph.appendChild(span);
+        paragraph.appendChild(document.createTextNode (" "));
+    })
     
-    paragraph.innerHTML = paragraph.innerHTML.replace(/\b(\w+)\b/g, "<span>$1</span>");
+    // paragraph.innerHTML = paragraph.innerHTML.replace(/\w+/g, "<span>$&</span>");
       
     let singleWords = document.querySelectorAll('.text-container span');
 
@@ -116,21 +130,33 @@ componentDidMount(){
 
         scrollbar.style.top = `${scrollbarToDown}%`;
 
-
-
     })
+
+
+    const scrollMouseMove = (e) => {
+
+        let valueToScroll = ((e.clientY - textContainer.getBoundingClientRect().top) / textContainerHeight) * (100 - scrollbarHeight);
+        let containerScroll = ((e.clientY - textContainer.getBoundingClientRect().top) / textContainerHeight) * diffH ;
+
+        scrollbar.style.top = `${valueToScroll}%`;
+        textContainer.scrollTop = `${containerScroll}`;
+    }
 
     scrollbar.addEventListener('mousedown', (e) => {
 
-        scrollbar.addEventListener('mousemove', (e) => {
-            
+        let elo = ((e.clientY - textContainer.getBoundingClientRect().top - scrollbar.offsetTop) / textContainerHeight) * 100;
 
+        this.setState({
+            elo: elo
+        });
 
-            scrollbar.style.top = `${e.clientY}`;
+        scrollbar.parentNode.addEventListener('mousemove', scrollMouseMove);    
 
-            
+    });
 
-        })
+    document.querySelector('body').addEventListener('mouseup', (e) => {
+
+        scrollbar.parentNode.removeEventListener('mousemove', scrollMouseMove)
 
     })
 
@@ -139,7 +165,7 @@ componentDidMount(){
     singleWords.forEach((word) => {
         word.addEventListener('mouseover', () => {
             word.classList.add('highlighted');
-            word.style.display = 'inline-block';
+            // word.style.display = 'inline-block';
             
             this.setState({
                 tooltipVisible: true
@@ -148,8 +174,8 @@ componentDidMount(){
             const tooltip = document.querySelector('.tooltip');
             const tooltipHeight = tooltip.clientHeight;
             const tooltipWidth = tooltip.clientWidth;
-            const tooltipX = word.offsetLeft - tooltipWidth / 2 + word.clientWidth / 2;
-            const tooltipY = word.offsetTop - tooltipHeight;             
+            const tooltipX = word.getBoundingClientRect().left - tooltipWidth / 2 + word.clientWidth / 2;
+            const tooltipY = word.getBoundingClientRect().top - 150;             
             const tooltipFirstWord = document.querySelector('.tooltip-first');
             const tooltipSecondWord = document.querySelector('.tooltip-second');
 
@@ -261,21 +287,21 @@ componentDidMount(){
         <div className="main-content">
             <div className = "left-container">
                 {languages}
-
+                <Tooltip tooltipVisible = {this.state.tooltipVisible}/>
                 <div className = "content-container">
                     <div className = "text-container">
                         <div className = "text-wrapper">
                             <p>{this.props.textToTranslate}</p>
-                            <Tooltip tooltipVisible = {this.state.tooltipVisible}/>
+                            
                         </div>
 
 
                     </div>
                     <div className = "scrollbar-container">
-                            <div className = "scrollbar">
+                        <div></div>
+                        <div className = "scrollbar">
                         </div>
-
-
+                        <div></div>
                     </div>
                 </div>
             </div>

@@ -3,31 +3,48 @@ import ReactDOM from 'react-dom';
 import Text from './Text';
 import EditField from './EditField';
 import Languages from './Languages';
+import Error from './Error';
 
 class Input extends React.Component {
   
-  constructor(){
-      super()
+  constructor(props){
+      super(props)
       
       this.state = {
           isHidden: false,
-          textToTranslate: null
+          textToTranslate: null,
+          errorVisible: false,
+          firstRender: true,
       }
       
-      this.getTextField = this.getTextField.bind(this)
+      this.getTextField = this.getTextField.bind(this);
+      this.hideError = this.hideError.bind(this);
   }
     
   getTextField(){
+      if (document.querySelector(".input-area").value === ''){
+        this.setState({
+            firstRender: false,
+            errorVisible: true,
+        });
+      }else{
+        this.setState({
+            isHidden: true,
+            textToTranslate: document.querySelector(".input-area").value,
+        })
+      }
+      
+  };
+
+  hideError(){
       this.setState({
-          isHidden: true,
-          textToTranslate: document.querySelector(".input-area").value
+        errorVisible: false,
       })
   }
-    
   
-      
+
   render() {
-      
+
     if (!this.state.isHidden){
         return (
             <div className="main-content">
@@ -39,14 +56,17 @@ class Input extends React.Component {
                             Zapisz
                         </a>
                     </div>
+
+                    <Error message="Wpisz lub wklej tekst..." errorVisible = {this.state.errorVisible} hideError = {this.hideError} firstRender = {this.state.firstRender}/>
                 </div>
             </div>
-            
         );
-        } else {
+        } else if(this.state.errorVisible !== true){
             return ( 
                 <Text textToTranslate = {this.state.textToTranslate}/>
             )
+        } else {
+            return null;
         }
     }
 }

@@ -1,7 +1,8 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: 'Abel', sans-serif; }
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300; }
 
 html body {
   overflow: hidden; }
@@ -31,12 +32,75 @@ html body {
     html body .container .main-content {
       width: 100%;
       display: flex;
-      height: calc(100vh - 50px); }
+      height: calc(100vh - 50px);
+      position: relative;
+      overflow: hidden; }
+      html body .container .main-content .error-overlay {
+        position: absolute;
+        top: -100%;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(34, 34, 34, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center; }
+        html body .container .main-content .error-overlay .error-box {
+          width: 20%;
+          height: 20%;
+          background-color: #1D1D1F;
+          color: #e2e2e2;
+          text-transform: uppercase;
+          font-size: 20px; }
+        html body .container .main-content .error-overlay.slide-down {
+          animation-name: errorSlide;
+          animation-duration: 1s;
+          animation-fill-mode: forwards; }
+
+@keyframes errorSlide {
+  from {
+    top: -100%; }
+  to {
+    top: 0; } }
       html body .container .main-content .left-container {
         width: 70%;
         box-sizing: border-box;
-        padding: 10px;
-        background-color: #303133; }
+        padding: 10px 50px;
+        background-color: #303133;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        position: relative; }
+        html body .container .main-content .left-container .tooltip {
+          position: absolute;
+          width: 200px;
+          height: 100px;
+          background: #222222;
+          top: 0;
+          left: 0;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-items: center;
+          color: #e2e2e2;
+          font-size: 18px;
+          text-align: center;
+          z-index: 10; }
+          html body .container .main-content .left-container .tooltip .tooltip-first {
+            width: 50%;
+            padding: 10px;
+            box-sizing: border-box; }
+          html body .container .main-content .left-container .tooltip .tooltip-second {
+            width: 50%;
+            padding: 10px;
+            box-sizing: border-box; }
+          html body .container .main-content .left-container .tooltip .tooltip-down {
+            width: 100%;
+            background-color: #151616;
+            padding: 10px;
+            font-size: 12px; }
+          html body .container .main-content .left-container .tooltip.hidden {
+            display: none; }
         html body .container .main-content .left-container .languages-container {
           color: #e2e2e2;
           width: 100%;
@@ -76,60 +140,49 @@ html body {
             color: #6795DE;
             cursor: pointer;
             text-align: center; }
-        html body .container .main-content .left-container .text-container {
-          color: #e2e2e2;
-          padding: 20px 70px;
-          overflow: hidden;
-          height: 80%;
-          position: relative; }
-          html body .container .main-content .left-container .text-container .scrollbar-container {
-            position: absolute;
-            top: 20px;
-            right: 0;
-            width: 10px;
-            height: 100%; }
-            html body .container .main-content .left-container .text-container .scrollbar-container .scrollbar {
-              width: 100%;
+        html body .container .main-content .left-container .content-container {
+          display: flex;
+          flex-wrap: nowrap;
+          height: 500px; }
+          html body .container .main-content .left-container .content-container .scrollbar-container {
+            width: 100px;
+            height: 540px;
+            position: relative;
+            background-color: #262729;
+            display: flex; }
+            html body .container .main-content .left-container .content-container .scrollbar-container div {
+              width: 45px;
+              height: 100%; }
+              html body .container .main-content .left-container .content-container .scrollbar-container div:nth-child(3) {
+                background-color: #303133; }
+            html body .container .main-content .left-container .content-container .scrollbar-container .scrollbar {
+              width: 10px;
               height: 20%;
-              background-color: #6795DE;
-              position: absolute;
-              top: 0; }
-          html body .container .main-content .left-container .text-container .tooltip {
-            position: absolute;
-            width: 200px;
-            height: 100px;
-            background: #262729;
-            top: 0;
-            left: 0;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
+              background-color: #1D1D1F;
+              position: relative;
+              top: 0;
+              cursor: pointer; }
+          html body .container .main-content .left-container .content-container .text-container {
+            width: 100%;
             color: #e2e2e2;
-            font-size: 18px;
-            text-align: center; }
-            html body .container .main-content .left-container .text-container .tooltip .tooltip-first {
-              width: 50%;
-              padding: 10px;
-              box-sizing: border-box; }
-            html body .container .main-content .left-container .text-container .tooltip .tooltip-second {
-              width: 50%;
-              padding: 10px;
-              box-sizing: border-box; }
-            html body .container .main-content .left-container .text-container .tooltip .tooltip-down {
-              width: 100%;
-              background-color: #151616;
-              padding: 10px;
-              font-size: 12px; }
-            html body .container .main-content .left-container .text-container .tooltip.hidden {
-              display: none; }
-          html body .container .main-content .left-container .text-container p {
-            font-size: 24px; }
-            html body .container .main-content .left-container .text-container p span {
-              cursor: pointer;
-              transition: .2s ease; }
-              html body .container .main-content .left-container .text-container p span.highlighted {
-                background-color: #3399ff; }
+            padding: 20px 70px;
+            overflow: auto;
+            height: 100%;
+            position: relative;
+            background-color: #262729;
+            overflow: -moz-scrollbars-none;
+            -ms-overflow-style: none;
+            text-align: justify; }
+            html body .container .main-content .left-container .content-container .text-container::-webkit-scrollbar {
+              width: 0 !important; }
+            html body .container .main-content .left-container .content-container .text-container p {
+              font-size: 18px;
+              line-height: 30px; }
+              html body .container .main-content .left-container .content-container .text-container p span {
+                cursor: pointer;
+                transition: .2s ease; }
+                html body .container .main-content .left-container .content-container .text-container p span.highlighted {
+                  background-color: #3399ff; }
         html body .container .main-content .left-container .start-container {
           width: 100%;
           height: 100%;
