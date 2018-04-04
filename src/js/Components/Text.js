@@ -93,7 +93,7 @@ componentDidMount(){
     wordsTable.forEach((element) => {
 
         const span = document.createElement('span');
-        span.innerHTML = `<span>${element}</span>`;
+        span.innerHTML = `${element}`;
 
         paragraph.appendChild(span);
         paragraph.appendChild(document.createTextNode (" "));
@@ -185,38 +185,38 @@ componentDidMount(){
       
             const clickedWord = word.innerHTML;
             
-            // const dictApi = new Promise((resolve, reject) => {
-            //     const apiURL = `https://glosbe.com/gapi/translate?from=${this.state.firstLanguage[0].abbr}&dest=${this.state.secondLanguage[0].abbr}&format=json&phrase=${clickedWord}&pretty=true`
+            const dictApi = new Promise((resolve, reject) => {
+                const apiURL = `https://glosbe.com/gapi/translate?from=${this.state.firstLanguage[0].abbr}&dest=${this.state.secondLanguage[0].abbr}&format=json&phrase=${clickedWord}&pretty=true`
         
-            //     const xhr = new XMLHttpRequest();
+                const xhr = new XMLHttpRequest();
         
-            //     xhr.open('GET', apiURL, true);
+                xhr.open('GET', apiURL, true);
         
-            //     xhr.onload = function() {
-            //         if (this.status === 200) {
+                xhr.onload = function() {
+                    if (this.status === 200) {
                 
-            //         const data = JSON.parse(xhr.responseText)
+                    const data = JSON.parse(xhr.responseText)
                     
-            //         const wordToAdd = {
-            //             clickedWord : clickedWord,
-            //             data: data,
-            //         }
+                    const wordToAdd = {
+                        clickedWord : clickedWord,
+                        data: data,
+                    }
 
-            //         resolve(wordToAdd);
+                    resolve(wordToAdd);
                 
-            //         } else {
-            //             reject('Wystąpił błąd w ściąganiu danych');
-            //         }
-            //     }
+                    } else {
+                        reject('Wystąpił błąd w ściąganiu danych');
+                    }
+                }
         
-            // xhr.send();
+            xhr.send();
         
-            // })
+            })
             
-            // dictApi.then((response) => {
-            //     tooltipFirstWord.innerHTML = word.innerHTML;
-            //     tooltipSecondWord.innerHTML = response.data.tuc[0].phrase.text
-            // })      
+            dictApi.then((response) => {
+                tooltipFirstWord.innerHTML = word.innerHTML;
+                tooltipSecondWord.innerHTML = response.data.tuc[0].phrase.text
+            })      
         })
           
         word.addEventListener('mouseleave', () => {
@@ -229,6 +229,8 @@ componentDidMount(){
         
         word.addEventListener('click', () => {
             let clickedWord = word.innerHTML;
+
+            console.log(word.innerHTML)
             
             const dictApi = new Promise((resolve, reject) => {
                 const apiURL = `https://glosbe.com/gapi/translate?from=${this.state.firstLanguage[0].abbr}&dest=${this.state.secondLanguage[0].abbr}&format=json&phrase=${clickedWord}&pretty=true`

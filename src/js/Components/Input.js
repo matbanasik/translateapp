@@ -59,6 +59,16 @@ class Input extends React.Component {
 
                     <Error message="Wpisz lub wklej tekst..." errorVisible = {this.state.errorVisible} hideError = {this.hideError} firstRender = {this.state.firstRender}/>
                 </div>
+                    <div className = "right-container">
+                    <h2>Lorem ipsum</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vestibulum auctor lorem, sit amet euismod enim. Cras posuere lacus eget odio ultricies iaculis.</p>
+
+                    <h2>Lorem ipsum</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vestibulum auctor lorem, sit amet euismod enim. Cras posuere lacus eget odio ultricies iaculis.</p>
+
+                    <h2>Lorem ipsum</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vestibulum auctor lorem, sit amet euismod enim. Cras posuere lacus eget odio ultricies iaculis.</p>
+                </div>
             </div>
         );
         } else if(this.state.errorVisible !== true){

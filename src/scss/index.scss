@@ -35,7 +35,7 @@ html{
                            color: #e2e2e2;
                            padding: 15px;
                            transition: .3s ease;
-                            height: 100%;
+                           height: 100%;
                             
                             &:hover{
                                 background-color: #313234; 
@@ -119,6 +119,28 @@ html{
                             to {top: -100%;}
                         }
 
+                    }
+                }
+
+                .right-container{
+                    width: 30%;
+                    box-sizing: border-box; 
+                    padding: 20px 50px;
+                    background-color: #262729;
+                    position: relative;
+                    color: #e2e2e2;
+
+                    h2{
+                        width: 100%;
+                        text-align: left;
+                        text-transform: uppercase;
+                        margin-bottom: 8px;
+                    }
+
+                    p{
+                        width: 100%;
+                        text-align: left;
+                        margin-bottom: 30px;
                     }
                 }
                 
@@ -219,7 +241,7 @@ html{
                         
                         .language-switch{
                             width: 40px;
-                            font-size: 30px;
+                            font-size: 20px;
                             color: #6795DE;
                             cursor: pointer;
                             text-align: center;
@@ -231,6 +253,8 @@ html{
                         display: flex;
                         flex-wrap: nowrap;
                         height: 500px;
+                        justify-content: center;
+                        width: 100%;
 
                         .scrollbar-container{
                             width: 100px;
@@ -297,11 +321,7 @@ html{
                         }
 
                     }
-
-
-
-
-                    
+   
                     .start-container{
                         width: 100%;
                         height: 100%;
@@ -387,19 +407,34 @@ html{
                             
                             .clicked-word{
                                 width: 100%;
-                                font-size: 24px;
+                                font-size: 20px;
                                 text-align: center;
-                                padding: 5px;
+                                padding: 7px 0;
+                                cursor: pointer;
+                                transition: .2s ease;
+
+                                &:hover{
+                                    background-color: #303133;
+                                }
+
                             }
                             
                             .word-details{
                                 
                                 .word-meanings{
                                     background-color: #222222;
+                                    max-height: 200px;
+                                    overflow: auto;
+                                    overflow: -moz-scrollbars-none;
+                                    -ms-overflow-style: none;
+
+                                    &::-webkit-scrollbar {
+                                        width: 0 !important;
+                                   }  
                                     
                                     .meaning{
                                         margin: 0;
-                                        padding: 10px;
+                                        padding: 7px;
                                         
                                         &:nth-of-type(2n+1){
                                             background-color: #303133;

@@ -33,7 +33,7 @@ class Languages extends React.Component {
                 </div>
 
                 <div className = "language-switch" onClick = {this.props.switchLanguages}>
-                    <i className = "icon-switch"></i>
+                    <i className = "icon-exchange"></i>
                 </div>
 
                 <div className = "second-language language">

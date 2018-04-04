@@ -40,6 +40,7 @@ class ListItem extends React.Component {
             <li className = {liClass}>
                 <div className = "clicked-word" onClick = {this.showMore}>
                     {this.props.word.clickedWord}
+                    <i className = "icon-angle-down"></i>
                 </div>
             </li>  
         )
@@ -48,6 +49,7 @@ class ListItem extends React.Component {
             <li className = {liClass}>
                 <div className = "clicked-word" onClick = {this.showMore}>
                     {this.props.word.clickedWord}
+                    <i className = "icon-angle-up"></i>
                 </div>
                 <WordDetails wordDetails = {meaningsOnList}/>
             </li>  

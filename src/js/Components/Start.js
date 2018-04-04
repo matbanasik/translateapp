@@ -5,8 +5,8 @@ import Input from './Input';
 
 class Start extends React.Component {
     
-  constructor(){
-      super()
+  constructor(props){
+      super(props)
       
       this.state = {
           isHidden: false
@@ -34,6 +34,18 @@ class Start extends React.Component {
                     </a>
                 </div>
             </div>
+        
+            <div className = "right-container">
+                <h2>Lorem ipsum</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vestibulum auctor lorem, sit amet euismod enim. Cras posuere lacus eget odio ultricies iaculis.</p>
+
+                <h2>Lorem ipsum</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vestibulum auctor lorem, sit amet euismod enim. Cras posuere lacus eget odio ultricies iaculis.</p>
+
+                <h2>Lorem ipsum</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vestibulum auctor lorem, sit amet euismod enim. Cras posuere lacus eget odio ultricies iaculis.</p>
+            </div>
+
         </div>
     );
     } else{

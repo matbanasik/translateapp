@@ -57,3 +57,6 @@
  
 .icon-down-open:before { content: '\e800'; } /* '' */
 .icon-switch:before { content: '\e801'; } /* '' */
+.icon-angle-up:before { content: '\f106'; } /* '' */
+.icon-angle-down:before { content: '\f107'; } /* '' */
+

@@ -45,16 +45,36 @@ html body {
         display: flex;
         justify-content: center;
         align-items: center; }
+        html body .container .main-content .error-overlay button {
+          display: block;
+          padding: 10px 20px;
+          font-size: 16px;
+          text-transform: uppercase;
+          background-color: #1D1D1F;
+          color: #6795DE;
+          border: 1px solid #6795DE;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: .2s ease;
+          position: absolute;
+          bottom: 10px;
+          left: 50%;
+          transform: translate(-50%); }
+          html body .container .main-content .error-overlay button:hover {
+            background-color: #151616; }
         html body .container .main-content .error-overlay .error-box {
-          width: 20%;
+          width: 40%;
           height: 20%;
           background-color: #1D1D1F;
           color: #e2e2e2;
           text-transform: uppercase;
-          font-size: 20px; }
+          font-size: 20px;
+          text-align: center;
+          padding-top: 30px;
+          position: relative; }
         html body .container .main-content .error-overlay.slide-down {
           animation-name: errorSlide;
-          animation-duration: 1s;
+          animation-duration: .5s;
           animation-fill-mode: forwards; }
 
 @keyframes errorSlide {
@@ -62,6 +82,16 @@ html body {
     top: -100%; }
   to {
     top: 0; } }
+        html body .container .main-content .error-overlay.slide-up {
+          animation-name: errorSlideUp;
+          animation-duration: .5s;
+          animation-fill-mode: forwards; }
+
+@keyframes errorSlideUp {
+  from {
+    top: 0; }
+  to {
+    top: -100%; } }
       html body .container .main-content .left-container {
         width: 70%;
         box-sizing: border-box;
@@ -250,7 +280,13 @@ html body {
               text-align: center;
               padding: 5px; }
             html body .container .main-content .edit-container ul li .word-details .word-meanings {
-              background-color: #222222; }
+              background-color: #222222;
+              max-height: 200px;
+              overflow: auto;
+              overflow: -moz-scrollbars-none;
+              -ms-overflow-style: none; }
+              html body .container .main-content .edit-container ul li .word-details .word-meanings::-webkit-scrollbar {
+                width: 0 !important; }
               html body .container .main-content .edit-container ul li .word-details .word-meanings .meaning {
                 margin: 0;
                 padding: 10px; }

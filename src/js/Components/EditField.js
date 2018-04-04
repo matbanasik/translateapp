@@ -13,6 +13,7 @@ class EditField extends React.Component {
 
     
 componentDidUpdate(prevProps, prevState){ 
+
     if(prevProps.words === null){
         this.setState({
             wordsToAdd: [...this.state.wordsToAdd.slice(), this.props.words]
