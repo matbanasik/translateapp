@@ -196,7 +196,7 @@ componentDidMount(){
                
 
                 xhr.open('GET', apiURL, true);
-                xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
+                xhr.setRequestHeader('Access-Control-Allow-Origin', 'https://matbanasik.github.io');
                
         
                 xhr.onload = function() {
