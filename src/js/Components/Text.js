@@ -186,11 +186,18 @@ componentDidMount(){
             const clickedWord = word.innerHTML;
             
             const dictApi = new Promise((resolve, reject) => {
+
+          
+
                 const apiURL = `https://glosbe.com/gapi/translate?from=${this.state.firstLanguage[0].abbr}&dest=${this.state.secondLanguage[0].abbr}&format=json&phrase=${clickedWord}&pretty=true`
         
                 const xhr = new XMLHttpRequest();
-        
+                
+               
+
                 xhr.open('GET', apiURL, true);
+                xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
+               
         
                 xhr.onload = function() {
                     if (this.status === 200) {
@@ -214,8 +221,19 @@ componentDidMount(){
             })
             
             dictApi.then((response) => {
-                tooltipFirstWord.innerHTML = word.innerHTML;
-                tooltipSecondWord.innerHTML = response.data.tuc[0].phrase.text
+
+                if (response.data.tuc[0] === undefined || response.data.tuc[0].phrase === undefined){
+                    tooltipSecondWord.style.display = "none";
+                    tooltipFirstWord.style.width = '100%';
+                    tooltipFirstWord.innerHTML = 'Nie&nbsp;znaleziono&nbsp;tłumaczenia';
+                }else{
+                    tooltipSecondWord.style.display = "block";
+                    tooltipFirstWord.style.width = '50%';
+                    tooltipFirstWord.innerHTML = word.innerHTML;
+                    tooltipSecondWord.innerHTML = response.data.tuc[0].phrase.text
+                }
+
+
             })      
         })
           
@@ -294,7 +312,6 @@ componentDidMount(){
                     <div className = "text-container">
                         <div className = "text-wrapper">
                             <p>{this.props.textToTranslate}</p>
-                            
                         </div>
 
 

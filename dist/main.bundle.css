@@ -92,6 +92,22 @@ html body {
     top: 0; }
   to {
     top: -100%; } }
+      html body .container .main-content .right-container {
+        width: 30%;
+        box-sizing: border-box;
+        padding: 20px 50px;
+        background-color: #262729;
+        position: relative;
+        color: #e2e2e2; }
+        html body .container .main-content .right-container h2 {
+          width: 100%;
+          text-align: left;
+          text-transform: uppercase;
+          margin-bottom: 8px; }
+        html body .container .main-content .right-container p {
+          width: 100%;
+          text-align: left;
+          margin-bottom: 30px; }
       html body .container .main-content .left-container {
         width: 70%;
         box-sizing: border-box;
@@ -166,14 +182,16 @@ html body {
                 background-color: #303133; }
           html body .container .main-content .left-container .languages-container .language-switch {
             width: 40px;
-            font-size: 30px;
+            font-size: 20px;
             color: #6795DE;
             cursor: pointer;
             text-align: center; }
         html body .container .main-content .left-container .content-container {
           display: flex;
           flex-wrap: nowrap;
-          height: 500px; }
+          height: 500px;
+          justify-content: center;
+          width: 100%; }
           html body .container .main-content .left-container .content-container .scrollbar-container {
             width: 100px;
             height: 540px;
@@ -276,9 +294,13 @@ html body {
             margin: 20px; }
             html body .container .main-content .edit-container ul li .clicked-word {
               width: 100%;
-              font-size: 24px;
+              font-size: 20px;
               text-align: center;
-              padding: 5px; }
+              padding: 7px 0;
+              cursor: pointer;
+              transition: .2s ease; }
+              html body .container .main-content .edit-container ul li .clicked-word:hover {
+                background-color: #303133; }
             html body .container .main-content .edit-container ul li .word-details .word-meanings {
               background-color: #222222;
               max-height: 200px;
@@ -289,7 +311,7 @@ html body {
                 width: 0 !important; }
               html body .container .main-content .edit-container ul li .word-details .word-meanings .meaning {
                 margin: 0;
-                padding: 10px; }
+                padding: 7px; }
                 html body .container .main-content .edit-container ul li .word-details .word-meanings .meaning:nth-of-type(2n+1) {
                   background-color: #303133; }
           html body .container .main-content .edit-container ul .odd {
