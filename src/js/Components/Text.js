@@ -189,14 +189,14 @@ componentDidMount(){
 
           
 
-                const apiURL = `https://glosbe.com/gapi/translate?from=${this.state.firstLanguage[0].abbr}&dest=${this.state.secondLanguage[0].abbr}&format=json&phrase=${clickedWord}&pretty=true`
+                const apiURL = `https://cors.io/?https://glosbe.com/gapi/translate?from=${this.state.firstLanguage[0].abbr}&dest=${this.state.secondLanguage[0].abbr}&format=json&phrase=${clickedWord}&pretty=true`
         
                 const xhr = new XMLHttpRequest();
                 
                
 
                 xhr.open('GET', apiURL, true);
-                xhr.setRequestHeader('Access-Control-Allow-Origin', 'https://matbanasik.github.io');
+                // xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
                
         
                 xhr.onload = function() {
@@ -251,7 +251,7 @@ componentDidMount(){
             console.log(word.innerHTML)
             
             const dictApi = new Promise((resolve, reject) => {
-                const apiURL = `https://glosbe.com/gapi/translate?from=${this.state.firstLanguage[0].abbr}&dest=${this.state.secondLanguage[0].abbr}&format=json&phrase=${clickedWord}&pretty=true`
+                const apiURL = `https://cors.io/?https://glosbe.com/gapi/translate?from=${this.state.firstLanguage[0].abbr}&dest=${this.state.secondLanguage[0].abbr}&format=json&phrase=${clickedWord}&pretty=true`
         
                 const xhr = new XMLHttpRequest();
         
